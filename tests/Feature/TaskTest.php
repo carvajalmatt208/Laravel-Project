@@ -10,6 +10,16 @@ class TaskTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_task_pages_are_available(): void
+    {
+        $this->get('/tasks')->assertOk()->assertSee('Task Manager');
+        $this->get('/tasks/create')->assertOk()->assertSee('Add a task.');
+
+        $task = Task::create(['task_name' => 'Review notes', 'status' => 'Pending']);
+
+        $this->get("/tasks/{$task->id}/edit")->assertOk()->assertSee('Update a task.');
+    }
+
     public function test_tasks_can_be_created_and_viewed(): void
     {
         $response = $this->post('/tasks', [

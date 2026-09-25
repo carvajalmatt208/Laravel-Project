@@ -17,13 +17,15 @@
         .main { padding: 42px 0 70px; }
         .eyebrow { color: var(--accent); font: 700 .7rem/1.2 Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
         h1, h2, p { margin-top: 0; }
-        h1 { margin-bottom: 8px; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -.03em; }
+        h1 { margin-bottom: 8px; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; letter-spacing: 0; }
         h2 { font-size: 1.1rem; margin-bottom: 5px; }
         .intro { max-width: 520px; margin-bottom: 30px; color: var(--muted); font: .9rem/1.5 Arial, sans-serif; }
-        .button { border: 0; border-radius: 3px; background: var(--ink); color: #000; cursor: pointer; display: inline-block; padding: 10px 14px; font: 700 .76rem Arial, sans-serif; text-decoration: none; }
+        .button { border: 0; border-radius: 3px; background: var(--ink); color: #000; cursor: pointer; display: inline-block; padding: 10px 14px; font: 700 .76rem Arial, sans-serif; text-decoration: none; transition: background .18s ease, border-color .18s ease, color .18s ease; }
         .button:hover { background: var(--accent); }
         .button.secondary { background: transparent; border: 1px solid var(--line); color: var(--ink); }
+        .button.secondary:hover { border-color: var(--accent); color: var(--accent); }
         .button.danger { background: transparent; color: var(--danger); padding: 8px 0; }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
         .toolbar { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 14px; }
         .count { color: var(--muted); font: .82rem Arial, sans-serif; }
         .notice { margin-bottom: 20px; padding: 12px 14px; border: 1px solid #31535b; background: #102126; color: var(--accent); font: .82rem Arial, sans-serif; }
@@ -43,10 +45,11 @@
         .form-card { padding: 24px; border: 1px solid var(--line); background: var(--card); }
         .readonly-field { margin-bottom: 19px; padding: 12px; border: 1px solid var(--line); background: var(--soft); color: var(--muted); font: .9rem Arial, sans-serif; }
         label { display: block; margin-bottom: 7px; font: 700 .78rem Arial, sans-serif; }
-        input, textarea, select { width: 100%; border: 1px solid var(--line); border-radius: 2px; padding: 12px; margin-bottom: 19px; background: #191c1f; color: var(--ink); font: 1rem Arial, sans-serif; }
+        input, textarea, select { width: 100%; border: 1px solid var(--line); border-radius: 2px; padding: 12px; margin-bottom: 19px; background: #191c1f; color: var(--ink); font: 1rem Arial, sans-serif; transition: border-color .18s ease, box-shadow .18s ease; }
+        input:focus, textarea:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(158, 216, 229, .12); outline: 0; }
         textarea { min-height: 130px; resize: vertical; }
         .field-error { margin: -13px 0 15px; color: var(--danger); font: .78rem Arial, sans-serif; }
-        @media (max-width: 640px) { .shell { width: min(100% - 28px, 1100px); } .main { padding-top: 38px; } .task { grid-template-columns: 1fr; gap: 12px; } .toolbar { align-items: start; flex-direction: column; } .topbar-inner { min-height: 64px; } }
+        @media (max-width: 640px) { .shell { width: min(100% - 28px, 1100px); } .main { padding-top: 38px; } .task { grid-template-columns: 1fr; gap: 12px; } .toolbar { align-items: start; flex-direction: column; } .topbar-inner { min-height: 64px; } .actions { flex-wrap: wrap; } }
     </style>
 </head>
 <body>
